@@ -1,22 +1,16 @@
-package com.datpl.moeapoc;
+package com.datpl.moeapoc.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/matching")
+@RequestMapping("/match")
+@RequiredArgsConstructor
 public class MatchingController {
 
-    @Autowired
-    private MatchingService matchingService;
-
-    @GetMapping("/initialize")
-    public String initializeData() {
-        matchingService.initializeData();
-        return "Data initialized.";
-    }
+    private final MatchingService matchingService;
 
     @GetMapping("/run")
     public String runMatching() {
@@ -24,7 +18,7 @@ public class MatchingController {
         return "Matching completed.";
     }
 
-    @GetMapping("/results")
+    @GetMapping("/res")
     public String getResults() {
         return matchingService.getMatchingResults();
     }

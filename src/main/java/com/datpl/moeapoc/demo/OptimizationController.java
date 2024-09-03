@@ -1,15 +1,16 @@
-package com.datpl.moeapoc;
+package com.datpl.moeapoc.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/optimization")
+@RequestMapping("/opt")
+@RequiredArgsConstructor
 public class OptimizationController {
-    @Autowired
-    private OptimizationService optimizationService;
+
+    private final OptimizationService optimizationService;
 
     @GetMapping("/run")
     public String runOptimization() {
